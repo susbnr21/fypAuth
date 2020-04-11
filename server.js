@@ -35,14 +35,15 @@ require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
 
+// importing vehicle
 const vehicles = require('./app/controller/vehicle.contoller');
-const usersinfo = require('./app/controller/user.controller');
+// const usersinfo = require('./app/controller/user.controller');
 
 //for vehicle
 app.post('/vehicles', vehicles.create);
 
-//for users
-app.get('/usersinfo', usersinfo.findAll);
+// //for users
+// app.get('/usersinfo', usersinfo.findAll);
 
 const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
 app.listen(port, () => console.log(`Server up and running on port ${port} !`));

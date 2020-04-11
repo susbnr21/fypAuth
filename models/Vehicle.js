@@ -3,8 +3,6 @@ const Schema = mongoose.Schema;
 
 //Create Schema
 const VehicleSchema = new Schema({
-    userName: String,
-    email: String,
     contact: String,
     address_from: String,
     address_to: String,
