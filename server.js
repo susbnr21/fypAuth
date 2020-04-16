@@ -5,6 +5,7 @@ const passport = require("passport");
 
 const app = express();
 const users = require("./routes/api/users");
+const trucks = require("./routes/api/trucks");
 
 // Bodyparser middleware
 app.use(
@@ -34,6 +35,7 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
+app.use("/api/trucks", trucks);
 
 // importing vehicle
 const vehicles = require('./app/controller/vehicle.contoller');
