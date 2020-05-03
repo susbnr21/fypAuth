@@ -1,13 +1,17 @@
 const Vehicle = require('../../models/Vehicle');
 
-exports.create = (req, res) => {
+exports.findAll = (req, res) => {
+  Vehicle.find()
+    .then(data => {
+      res.send(data);
+    }).catch(err => {
+    res.status(500).send({
+      message: err.message || "Some error occurred while retrieving Student Details."
+    });
+  });
+};
 
-    if(!req.body.contact) {
-      return res.status(400).send({
-        message: "The fields cannot be empty!!!"
-      });
-    }
-  
+exports.create = (req, res) => {
     //create a driver
     const vehicle = new Vehicle({
         contact: req.body.contact,

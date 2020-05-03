@@ -2,10 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
+const cors = require("cors");
 
 const app = express();
 const users = require("./routes/api/users");
 const trucks = require("./routes/api/trucks");
+const admins = require("./routes/api/admins");
 
 // Bodyparser middleware
 app.use(
@@ -36,13 +38,16 @@ require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
 app.use("/api/trucks", trucks);
+app.use("/api/admins", admins);
+
+app.use(cors());
 
 // importing vehicle
-const vehicles = require('./app/controller/vehicle.contoller');
+// const vehicles = require('./app/controller/vehicle.contoller');
 // const usersinfo = require('./app/controller/user.controller');
 
 //for vehicle
-app.post('/vehicles', vehicles.create);
+// app.post('/vehicles', vehicles.create);
 
 // //for users
 // app.get('/usersinfo', usersinfo.findAll);

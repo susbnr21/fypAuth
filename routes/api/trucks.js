@@ -9,6 +9,19 @@ const validateInfoInput = require("../../validation/truck");
 // Load Truck model
 const Truck = require("../../models/Truck");
 
+// getting truck details 
+router.get("/truck", (req, res) => {
+        Truck.find()
+          .then(data => {
+            res.send(data);
+          }).catch(err => {
+          res.status(500).send({
+            message: err.message || "Some error occurred while retrieving Details."
+          });
+    });
+})
+
+// posting truck details
 router.post("/truck", (req, res) => {
 
     // Form validation
