@@ -41,6 +41,29 @@ router.post("/register", (req, res) => {
               .catch(err => console.log(err));
           });
         });
+        
+      //For Sending Email 
+      const nodemailer = require('nodemailer');
+        
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+                user: keys.user,
+                pass: keys.password
+            }
+        });
+        const mailOptions = {
+        from: 'rentalshifters@gmail.com', // sender address
+        to: req.body.email, // list of receivers
+        subject: 'Registration Successful', // Subject line
+        html: '<p style={{fontWeight: "bold"}}>Hello There, Welcome To Rental Shifters.</p>'// plain text body
+      };
+      transporter.sendMail(mailOptions, function (err, info) {
+        if(err)
+          console.log(err)
+        else
+          console.log(info);
+      }); 
       }
     });
   });

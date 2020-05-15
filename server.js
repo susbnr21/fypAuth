@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
-const cors = require("cors");
+const cors = require("cors")
 
 const app = express();
 const users = require("./routes/api/users");
@@ -16,6 +16,8 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+
+app.use(cors());
 
 // DB Config
 const db = require("./config/keys").mongoURI;
@@ -39,8 +41,6 @@ require("./config/passport")(passport);
 app.use("/api/users", users);
 app.use("/api/trucks", trucks);
 app.use("/api/admins", admins);
-
-app.use(cors());
 
 // importing vehicle
 // const vehicles = require('./app/controller/vehicle.contoller');
